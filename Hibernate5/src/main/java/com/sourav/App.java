@@ -1,7 +1,11 @@
 package com.sourav;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+
+import com.sourav.entity.Student;
 
 /**
  * Hello world!
@@ -21,7 +25,20 @@ public class App
     	//System.out.println( "XML Config -> SessionFactoryObject ::  " + sessionFactory );
     	
     	//File Configuration
-    	HibernateUtil hibernateUtilFileConfig = new HibernateUtil();
-    	hibernateUtilFileConfig.getSessionFactory();
+    	//HibernateUtil hibernateUtilFileConfig = new HibernateUtil();
+    	//hibernateUtilFileConfig.getSessionFactory();
+    	
+    	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    	 	
+    	Session session = sessionFactory.openSession();
+    	
+    	Transaction transaction = session.beginTransaction();
+    	
+    	Student student = new Student(1, "Sourav", "s@gmail.com", "Ind"); 
+    	session.save(student);
+    	
+    	transaction.commit();
+    	
+    	session.close();
     }
 }

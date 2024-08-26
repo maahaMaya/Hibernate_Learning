@@ -11,6 +11,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import com.sourav.entity.Student;
+
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 
@@ -29,6 +31,7 @@ public class HibernateUtil {
 				properties.put(Environment.SHOW_SQL, "true");
 				
 				configuration.setProperties(properties);
+				configuration.addAnnotatedClass(Student.class);
 				
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 				
