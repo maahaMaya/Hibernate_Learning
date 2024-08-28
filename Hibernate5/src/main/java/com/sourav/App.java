@@ -1,10 +1,13 @@
 package com.sourav;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.sourav.entity.Employee;
 import com.sourav.entity.Student;
 
 /**
@@ -29,13 +32,23 @@ public class App
     	//hibernateUtilFileConfig.getSessionFactory();
     	
     	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    	System.out.println(sessionFactory);
     	 	
     	Session session = sessionFactory.openSession();
     	
     	Transaction transaction = session.beginTransaction();
     	
-    	Student student = new Student(1, "Sourav", "s@gmail.com", "Ind"); 
-    	session.save(student);
+    	//Student student = new Student(1, "Sourav", "s@gmail.com", "Ind"); 
+    	//session.save(student);
+    	
+    	Employee employee = new Employee();
+    	employee.setEmpName("shiv");
+    	employee.setEmail("shiv@gmail.com");
+    	employee.setJoiningDate(new Date());
+    	employee.setSalary((double) 1222222);
+    	employee.setStatus(true);
+    	employee.setToken("sfdgfghvfythc");
+    	session.save(employee);
     	
     	transaction.commit();
     	
