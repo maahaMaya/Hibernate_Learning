@@ -13,6 +13,8 @@ import org.hibernate.service.ServiceRegistry;
 
 import com.sourav.entity.Employee;
 import com.sourav.entity.Student;
+import com.sourav.mapping.one_to_one.AnswersEntity;
+import com.sourav.mapping.one_to_one.QuestionsEntity;
 
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
@@ -34,6 +36,9 @@ public class HibernateUtil {
 				configuration.setProperties(properties);
 				configuration.addAnnotatedClass(Student.class);
 				configuration.addAnnotatedClass(Employee.class);
+				
+				configuration.addAnnotatedClass(QuestionsEntity.class);
+				configuration.addAnnotatedClass(AnswersEntity.class);
 				
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 				
