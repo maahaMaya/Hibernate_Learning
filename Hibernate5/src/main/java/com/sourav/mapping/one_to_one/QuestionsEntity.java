@@ -2,6 +2,7 @@ package com.sourav.mapping.one_to_one;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -13,6 +14,7 @@ public class QuestionsEntity {
 	private String question;
 
 	@OneToOne
+	@JoinColumn(name = "answer_id") //join name
 	private AnswersEntity answersEntity;
 
 	public QuestionsEntity() {

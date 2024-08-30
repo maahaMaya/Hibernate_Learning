@@ -2,6 +2,7 @@ package com.sourav.mapping.one_to_one;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class AnswersEntity {
@@ -11,6 +12,16 @@ public class AnswersEntity {
 
 	private String answer;
 
+	@OneToOne
+	private QuestionsEntity questionsEntity;
+
+	public QuestionsEntity getQuestionsEntity() {
+		return questionsEntity;
+	}
+
+	public void setQuestionsEntity(QuestionsEntity questionsEntity) {
+		this.questionsEntity = questionsEntity;
+	}
 
 	public int getAnswer_id() {
 		return answer_id;
