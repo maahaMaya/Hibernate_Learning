@@ -47,7 +47,6 @@ public class OneToOneUniDirectionalMapping {
 		session.save(q2);
 
 		session.save(a3);
-
 		session.save(q3);
 
 		transaction.commit();

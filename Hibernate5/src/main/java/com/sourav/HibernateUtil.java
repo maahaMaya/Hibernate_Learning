@@ -23,7 +23,7 @@ public class HibernateUtil {
 		if (sessionFactory == null) {
 			try {
 				Configuration configuration = new Configuration();
-				
+
 				Properties properties = new Properties();
 				properties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
 				properties.put(Environment.URL, "jdbc:mysql://localhost:3306/gfive");
@@ -32,19 +32,20 @@ public class HibernateUtil {
 				properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
 				properties.put(Environment.HBM2DDL_AUTO, "update");
 				properties.put(Environment.SHOW_SQL, "true");
-				
+
 				configuration.setProperties(properties);
 				configuration.addAnnotatedClass(Student.class);
 				configuration.addAnnotatedClass(Employee.class);
-				
+
 				configuration.addAnnotatedClass(QuestionsEntity.class);
 				configuration.addAnnotatedClass(AnswersEntity.class);
-				
-				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-				
-				sessionFactory =  configuration.buildSessionFactory(serviceRegistry);
-				
-				System.out.println( "File Conig -> SessionFactoryObject ::  " + sessionFactory );
+
+				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+						.applySettings(configuration.getProperties()).build();
+
+				sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+
+				System.out.println("File Conig -> SessionFactoryObject ::  " + sessionFactory);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

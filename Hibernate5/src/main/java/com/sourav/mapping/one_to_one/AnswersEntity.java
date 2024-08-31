@@ -12,7 +12,7 @@ public class AnswersEntity {
 
 	private String answer;
 
-	@OneToOne
+	@OneToOne(mappedBy = "answersEntity")
 	private QuestionsEntity questionsEntity;
 
 	public QuestionsEntity getQuestionsEntity() {
@@ -38,5 +38,4 @@ public class AnswersEntity {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-
 }
