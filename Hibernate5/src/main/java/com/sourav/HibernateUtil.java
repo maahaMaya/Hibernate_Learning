@@ -30,7 +30,7 @@ public class HibernateUtil {
 				properties.put(Environment.USER, "root");
 				properties.put(Environment.PASS, "12345");
 				properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
-				properties.put(Environment.HBM2DDL_AUTO, "update");
+				properties.put(Environment.HBM2DDL_AUTO, "create");
 				properties.put(Environment.SHOW_SQL, "true");
 
 				configuration.setProperties(properties);
@@ -39,6 +39,9 @@ public class HibernateUtil {
 
 				configuration.addAnnotatedClass(QuestionsEntity.class);
 				configuration.addAnnotatedClass(AnswersEntity.class);
+				
+				configuration.addAnnotatedClass(com.sourav.mapping.one_to_many.QuestionsEntity.class);
+				configuration.addAnnotatedClass(com.sourav.mapping.one_to_many.AnswersEntity.class);
 
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties()).build();
